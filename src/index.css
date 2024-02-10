@@ -1,0 +1,14 @@
+@import url('https://fonts.googleapis.com/css2?family=JetBrains+Mono&display=swap');
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+*{
+  font-family: 'Misans', sans-serif;
+  src: url('./assets/MiSans\ Latin\ VF.ttf');
+}
+
+/* placeholder color*/
+::placeholder {
+  color: white
+}
