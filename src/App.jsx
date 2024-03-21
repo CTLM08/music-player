@@ -14,13 +14,19 @@ export const appContext = createContext({
   navigate: () => {},
   add: null,
   setAdd: () => {},
+  currentMusic: null,
+  setCurrentMusic: () => {},
+  search: "",
+  setSearch: () => {},
 });
 
 const App = () => {
+  const [search, setSearch] = useState("");
   const navigate = useNavigate();
   const [add, setAdd] = useState(null);
   const [user, setUser] = useState(null);
   const [userdata, setUserdata] = useState(null);
+  const [currentMusic, setCurrentMusic] = useState(null);
   useEffect(() => {
     onAuthStateChanged(auth, (_user) => {
       if (_user) {
@@ -36,7 +42,19 @@ const App = () => {
   }, []);
   return (
     <appContext.Provider
-      value={{ user, setUser, userdata, setUserdata, navigate, add, setAdd }}
+      value={{
+        user,
+        setUser,
+        userdata,
+        setUserdata,
+        navigate,
+        add,
+        setAdd,
+        currentMusic,
+        setCurrentMusic,
+        search,
+        setSearch,
+      }}
     >
       <div
         className={`bg-zinc-900 p-5 flex justify-center items-center h-screen w-full transition-all flex-col`}

@@ -6,7 +6,8 @@ import Uploadmusic from "./Uploadmusic";
 import NoLogin from "./NoLogin";
 
 const Navbar = () => {
-  const { user, setUser, navigate, add, setAdd } = useContext(appContext);
+  const { user, setUser, navigate, add, setAdd, search, setSearch } =
+    useContext(appContext);
   return (
     <main className="w-full flex-1">
       <div className="text-white/70 flex justify-center text-2xl">
@@ -42,6 +43,10 @@ const Navbar = () => {
             className={`outline-none bg-zinc-900 p-3  h-11 w-full text-white/80 `}
             type="text"
             placeholder=""
+            value={search}
+            onChange={(e) => {
+              setSearch(e.target.value);
+            }}
           />
         </button>
         <button>
