@@ -18,12 +18,15 @@ export const appContext = createContext({
   setCurrentMusic: () => {},
   search: "",
   setSearch: () => {},
+  deleteMusic: null,
+  setDeleteMusic: () => {},
 });
 
 const App = () => {
   const [search, setSearch] = useState("");
   const navigate = useNavigate();
   const [add, setAdd] = useState(null);
+  const [deleteMusic, setDeleteMusic] = useState(null);
   const [user, setUser] = useState(null);
   const [userdata, setUserdata] = useState(null);
   const [currentMusic, setCurrentMusic] = useState(null);
@@ -39,7 +42,7 @@ const App = () => {
         setUser(null);
       }
     });
-  }, []);
+  }, [user, userdata]);
   return (
     <appContext.Provider
       value={{
@@ -54,6 +57,8 @@ const App = () => {
         setCurrentMusic,
         search,
         setSearch,
+        deleteMusic,
+        setDeleteMusic,
       }}
     >
       <div

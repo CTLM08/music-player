@@ -33,6 +33,7 @@ const Uploadmusic = () => {
       });
     });
   }
+
   return (
     <div className="text-white/80 fixed top-0 left-0 flex flex-col p-14 gap-4 bg-zinc-800/50  w-full h-full justify-center items-center  ">
       <div className="flex flex-col gap-4 bg-zinc-800 p-14 w-[80%]">

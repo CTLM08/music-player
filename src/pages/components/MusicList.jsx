@@ -7,8 +7,16 @@ import PlayerNoLoop from "./PlayerNoLoop";
 
 const MusicList = () => {
   const [loop, setLoop] = useState(false);
-  const { setAdd, user, userdata, currentMusic, setCurrentMusic, search } =
-    useContext(appContext);
+  const {
+    setAdd,
+    user,
+    userdata,
+    currentMusic,
+    setCurrentMusic,
+    search,
+    deleteMusic,
+    setDeleteMusic,
+  } = useContext(appContext);
   const [isPlaying, setIsPlaying] = useState(false);
   const [List, setList] = useState([]);
   useEffect(() => {
@@ -23,9 +31,19 @@ const MusicList = () => {
       {List?.map((music) => (
         <div className="w-full flex flex-col gap-3 p-2 " key={music.music_url}>
           <div className="items-center flex flex-row gap-4 w-full justify-between">
-            <div className="">
+            <div className="flex flex-row items-center gap-3">
               <h1>{music.name}</h1>
+              <button>
+                <Icon
+                  icon="material-symbols-light:delete-outline"
+                  className="w-6 h-6 text-red-500"
+                  onClick={() => {
+                    setDeleteMusic(music);
+                  }}
+                />
+              </button>
             </div>
+
             <div>
               <button>
                 <Icon
