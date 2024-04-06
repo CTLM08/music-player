@@ -1,10 +1,12 @@
-import React, { useRef, useState } from "react";
+import React, { useContext, useEffect, useRef, useState } from "react";
 import { Icon } from "@iconify/react";
 import moment from "moment";
+import { appContext } from "../../App";
 const Player = ({ props }) => {
   const playerRef = useRef(null);
   const [isPlaying, setIsPlaying] = useState(false);
   const [duration, setDuration] = useState(0);
+  const { currentMusic, setCurrentMusic } = useContext(appContext);
   const [currentTime, setCurrentTime] = useState(0);
   const togglePlay = (music) => {
     if (isPlaying) {
@@ -16,6 +18,12 @@ const Player = ({ props }) => {
     }
   };
   console.log(props.music);
+  useEffect(() => {
+    if (currentMusic != props.music) {
+      playerRef.current.pause();
+      setIsPlaying(false);
+    }
+  }, [currentMusic]);
   return (
     <div className="w-full">
       <div className="w-full flex-row flex items-center gap-3">
